@@ -1,0 +1,25 @@
+<!-- views/fruits/show.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= movie.name %></title> <!-- Dynamic title based on fruit name -->
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <h1><%= movie.name %></h1> <!-- Display fruit name -->
+    <h4>rating: <%= movie.rating %></h4>
+    <p><%= movie.description %></p>
+    <form action="/movies/<%=movie._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= movie.name %></button>
+      </form>
+      
+      <form action="/movies/<%=movie._id%>/edit" method="GET">
+        <button type="submit">update <%= movie.name %></button>
+      </form>
+
+      <a href="/movies">Back to Fruits</a>
+  </body>
+</html>

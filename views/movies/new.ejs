@@ -1,0 +1,31 @@
+<!-- views/fruits/new.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a Fruit</title>
+  </head>
+
+
+<body>
+    <%- include('../partials/nav') %>
+    <h1>add a new movie!</h1>
+    <form action="/movies" method="POST">
+     <fieldset>
+      <label for="name">movie name:</label>
+      <input type="text" name="name" id="name" />
+     </fieldset>
+     <fieldset>
+      <label for="rating">movie rating:</label>
+      <input type="number" name="rating" id="rating" />
+     </fieldset>
+     <fieldset>
+      <label for="description">description:</label>
+      <textarea name="description" id="description"></textarea>
+     </fieldset>
+      <button type="submit">Add Movie</button>
+    </form>
+  </body>
+</html>
