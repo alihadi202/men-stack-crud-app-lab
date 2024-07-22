@@ -40,9 +40,26 @@ app.get("/movies/:id", async (req, res, next) => {
     res.render("movies/show.ejs", { movie: foundMovie });
 });
 
-app.delete("/fruits/:fruitId", async (req, res, next) => {
-    await Fruit.findByIdAndDelete(req.params.fruitId);
-    res.redirect("/fruits");
+app.delete("/movies/:id", async (req, res, next) => {
+    await Movie.findByIdAndDelete(req.params.id);
+    res.redirect("/movies");
+});
+
+app.get("/movies/:id/edit", async (req, res) => {
+    const foundMovie = await Movie.findById(req.params.id);
+    console.log(foundMovie);
+    res.render("movies/edit.ejs", {
+        movie: foundMovie,
+      });
+});
+
+app.put("/movies/:id", async (req, res) => {
+    
+    // Update the fruit in the database
+    await Movie.findByIdAndUpdate(req.params.id, req.body);
+  
+    // Redirect to the fruit's show page to see the updates
+    res.redirect(`/movies/${req.params.id}`);
 });
 
 app.listen(3000, () => {
